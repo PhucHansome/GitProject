@@ -32,21 +32,21 @@ public class CityDTO {
 
     @NotNull(message = "Diện tích thành phố bắt buộc nhập")
     @Min(value = 9999, message = "Diện tích thành phố phải lớn hơn 10.000 km2")
-    @Max(value = 49999, message = "Diện tích thành phố phải bé hơn 50.000 km2")
+    @Max(value = 99999, message = "Diện tích thành phố phải bé hơn 100.000 km2")
     private int area;
 
     @NotNull(message = "Tổng dân số bắt buộc nhập")
-    @DecimalMin(value = "21", message = "Tổng dân số phải lớn hơn 20 triệu người")
+    @DecimalMin(value = "10", message = "Tổng dân số phải lớn hơn 10 triệu người")
     @DecimalMax(value = "100", message = "Tổng dân số phải bé hơn 100 triệu người")
     private BigDecimal population;
 
     @NotNull(message = "GDP bắt buộc nhập")
-    @Min(value = 2, message = "GDP bé nhất là 2")
-    @Max(value = 10, message = "GDP lớn nhất là 10")
+    @Min(value = 1, message = "GDP bé nhất là 1")
+    @Max(value = 20, message = "GDP lớn nhất là 20")
     private float gdp;
 
-    @NotNull(message = "Mô tả về thành phố bắt buộc nhập")
-    @Size(min = 10, message = "Mô tả quá ngắn")
+    @NotNull(message = "Giới thiệu về thành phố bắt buộc nhập")
+    @Size(min = 10, message = "Giới thiệu quá ngắn")
     private String description;
 
     public CityDTO(Long id, String cityName, Country country, int area, BigDecimal population, float gdp, String description) {

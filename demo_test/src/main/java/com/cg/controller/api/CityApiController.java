@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,7 +56,7 @@ public class CityApiController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> doCreate(@RequestBody CityDTO cityDTO, BindingResult bindingResult) {
+    public ResponseEntity<?> doCreate(@Validated @RequestBody CityDTO cityDTO, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return appUtils.mapErrorToResponse(bindingResult);
@@ -63,11 +64,11 @@ public class CityApiController {
 
         cityDTO.setId(0L);
         City newCity = cityService.save(cityDTO.toCity());
-        return new ResponseEntity<>(newCity, HttpStatus.CREATED);
+        return new ResponseEntity<>(newCity.toCityDTO(), HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> doUpdate(@RequestBody CityDTO cityDTO, BindingResult bindingResult) {
+    public ResponseEntity<?> doUpdate(@Validated @RequestBody CityDTO cityDTO, BindingResult bindingResult) {
 
 
         if (bindingResult.hasErrors()) {
@@ -77,5 +78,22 @@ public class CityApiController {
         City updateCity = cityService.save(cityDTO.toCity());
 
         return new ResponseEntity<>(updateCity.toCityDTO(), HttpStatus.ACCEPTED);
+    }
+
+
+    @DeleteMapping("/{Id}")
+    public ResponseEntity<?> doDelete(@PathVariable Long Id) {
+
+        Optional<City> optionalCity = cityService.findById(Id);
+
+        if (optionalCity.isPresent()) {
+            cityService.softDelete(optionalCity.get());
+            return new ResponseEntity<>("Delete customer success", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Error for deleted customer", HttpStatus.BAD_REQUEST);
+
+        }
+
+
     }
 }

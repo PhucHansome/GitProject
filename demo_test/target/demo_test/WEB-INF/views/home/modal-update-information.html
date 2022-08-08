@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="modal-update-information">
+    <div id="modalUpdateCity" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update City</h5>
+
+                </div>
+                <div class="modal-body">
+                    <div class="modal-alert-danger hide">
+
+
+                    </div>
+
+                    <form id="frmUpdateCity" method="post">
+                        <fieldset class="row g-3">
+                            <div class="col-12">
+                                <input type="hidden" id="IdCityUp">
+                                <label class="form-label">Tên thành phố:</label>
+                                <input type="text"  class="form-control" id="cityNameUp" required name="cityNameUp">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Quốc gia:</label>
+                                <select type="hidden"   class="form-control" name="CountryNameUp" id="CountryNameUp">
+
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Diện tích</label>
+                                <input type="number"  class="form-control" id="areaUp" required name="areaUp">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Dân số</label>
+                                <input type="number"  class="form-control" id="popularUp" required name="popularUp">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">GDP</label>
+                                <input type="number"   class="form-control" id="GDPUp" required name="GDPUp">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Giới thiệu</label>
+                                <textarea type="text" class="form-control" id="desctiprionUp" required
+                                          name="desctiprionUp"></textarea>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closess" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-primary btnUpdate">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Update City
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>

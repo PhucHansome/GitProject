@@ -30,7 +30,7 @@ public class CityServiceImpl implements ICityService{
 
     @Override
     public Optional<City> findById(Long id) {
-        return Optional.empty();
+        return cityRepository.findById(id);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class CityServiceImpl implements ICityService{
 
     @Override
     public City save(City city) {
-        return null;
+        return cityRepository.save(city);
     }
 
     @Override
@@ -50,7 +50,8 @@ public class CityServiceImpl implements ICityService{
 
     @Override
     public void softDelete(City city) {
-
+        city.setDeleted(true);
+        cityRepository.save(city);
     }
 
     @Override

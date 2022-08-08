@@ -13,7 +13,7 @@ public class HomeController {
     @GetMapping("/home")
     public ModelAndView showList(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/temp/list");
+        modelAndView.setViewName("/home/list");
         return modelAndView;
     }
 }

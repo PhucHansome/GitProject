@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="viewCity">
+    <div id="viewCity" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">View City</h5>
+
+                </div>
+                <div class="modal-body">
+                    <div class="modal-alert-danger hide">
+                    </div>
+
+                    <div class="ViewCity-Information" id="ViewCity-Information">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-danger btn-delete-this" data-bs-dismiss="modal"><i class="fa-solid fa-trash"></i> Xóa</button>
+                    <button type="button"  class="btn btn-success btn-handleShowEdit" data-bs-dismiss="modal"><i class="fa-solid fa-pen-to-square"></i> Chỉnh sửa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</th:block>
